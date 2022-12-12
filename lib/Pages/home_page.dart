@@ -41,9 +41,26 @@ class _HomePageState extends State<HomePage> {
       "title": 'Mobile'
     },
   ];
+  int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: NavigationBar(
+          onDestinationSelected: (int index) {
+            setState(() {
+              currentPageIndex = index;
+            });
+          },
+          height: 60,
+          selectedIndex: currentPageIndex,
+          destinations: const [
+            NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+            NavigationDestination(icon: Icon(Icons.add), label: 'Add'),
+            NavigationDestination(
+              icon: Icon(Icons.star_border_outlined),
+              label: 'Rating',
+            )
+          ]),
       body: Column(
         children: [
           Container(
